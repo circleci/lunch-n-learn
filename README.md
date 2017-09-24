@@ -26,7 +26,7 @@ CircleCI Lunch and Learn
 * Navigate to your account on GitHub.com 
   * Go to the `Repositories` tab and then select `new`
   * Go to the **Repositories** tab and then select **New**
-
+<img src="images/GH_Repo-New-Banner.png">
 
 * Building on:  
   * https://github.com/iynere/circle-walkthru 
