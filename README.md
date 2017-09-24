@@ -27,8 +27,10 @@ CircleCI Lunch and Learn
   * Go to the `Repositories` tab and then select `new`
   * Go to the **Repositories** tab and then select **New**
 <img src="images/GH_Repo-New-Banner.png">
-
-* Building on:  
+  * Alternatively you can navigate directly to https://github.com/new
+<img src="images/create-repo-circle-101-initialise-readme.png">
+  
+* We are building on:  
   * https://github.com/iynere/circle-walkthru 
   * jobs and workflows typing in a simple example 
 
