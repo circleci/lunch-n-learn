@@ -1,12 +1,12 @@
 # CircleCI Lunch and Learn
 <img src="images/continuous-integration-with-circle-ci.png">
 
-# CircleCI 101 - Lunch and learn :construction:
+# CircleCI 101 - Lunch and learn  <img src="images/lunch-learn-brown-bag-apple-notebooks.jpg" width="50" height="50" />
 
 * ### :watch: *For a 60 - 90 minute interactive "training"* 
 * ### :page_with_curl: *Format will be webpage or PDF*
 
-## Outline the plan/flow of the lunch :bento: and learn <img src="images/lunch-learn-brown-bag-apple-notebooks.jpg" width="50" height="50" />
+## Outline the plan/flow of the lunch :bento: and learn :school:
 
 ### 1. Brief intros for whatever team members are present 
 
