@@ -3,7 +3,7 @@ CircleCI Lunch and Learn
 
 <img src="https://lever-client-logos.s3.amazonaws.com/circle-logo-horizontal.png">
 
-# CircleCI 101 - ~~Training~~ Lunch and learn proposal draft :construction:
+# CircleCI 101 - Lunch and learn :construction:
 
 * ### :watch: *For a 60 - 90 minute interactive "training"* 
 * ### :page_with_curl: *Format will be webpage or PDF*
@@ -23,16 +23,21 @@ CircleCI Lunch and Learn
 
 ### 5. First CircleCI Build
 #### :computer: Let's try out something simple to start off with
+##### Creating a repository 
 * Navigate to your account on GitHub.com 
-  * Go to the `Repositories` tab and then select `new`
   * Go to the **Repositories** tab and then select **New**
-<img src="images/GH_Repo-New-Banner.png">
   * Alternatively you can navigate directly to https://github.com/new
+<img src="images/GH_Repo-New-Banner.png">
 <img src="images/create-repo-circle-101-initialise-readme.png">
+##### Adding a .yml file
+ * CircleCI uses the .yml file to identify how you want your testing environment setup and what tests you want to run.
+ * On CircleCI 2.0, this file must be called `config.yml` and must be in a hidden folder called .circleci (on Mac, Linux, and Windows systems, files and folders whose names start with a period are treated as system files that are hidden from users by default).
+
+ * To create the file and folder on GitHub, click the **"Create new file"** button the repo page and type `.circleci/config.yml`.
   
 * We are building on:  
   * https://github.com/iynere/circle-walkthru 
-  * jobs and workflows typing in a simple example 
+  * we want to show jobs and workflows in a simple example 
 
 ### 6. Forking an existing project to see some more CircleCI funtionality 
 * Open to suggestion on what repo would be best for this section
