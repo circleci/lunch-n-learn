@@ -63,14 +63,28 @@ If you already have a CircleCI account then you can navigate to your dashboard: 
 Next, you will be given the option of "following" any projects you have access to that are already building on CircleCI (this would typically apply to developers connected to a company or organization's GitHub/Bitbucket account). Since this probably doesn't apply to you, click "Skip - I don't want to follow any projects." On the next screen, you'll be able to add the repo you just created as a new project on Circle.
 
 To add your new repo, find your GitHub or Bitbucket account on the left side of the page, under the "1) Choose an organization that you are a member of" text. When you click on your account, you should see your repo appear in the window on the right. Click the "Setup project" button next to it.
+
 <img src="images/CircleCI-add-new-project-list.png">
 
 On the next screen, you're given some options for configuring your project on CircleCI. Leave everything as-is for now and just click the "Start building" button a bit down the page on the right.
+
 <img src="images/CircleCI-2.0-setup-project-circle101.png">
 <img src="images/CircleCI-2.0-start-building.png">
+
+#### Running your first CircleCI build!
+
+You should see your build start to run automatically—and pass! So, what just happened? Click on the green button and let's investigate.
+
+1. **Spin up environment:** CircleCI used the `ruby:2.3-node-browsers` Docker image to launch a virtual computing environment with Ruby, Node.js, and web browsers pre-installed
+
+2. **Checkout code:** Circle checked out your GitHub/Bitbucket repository and "cloned" it into the virtual environment launched in step 1
+
+3. **echo "hello world":** this was the only other instruction in your `config.yml` file: Circle ran the echo command with the input "hello world" ([echo](https://linux.die.net/man/1/echo) does exactly what you'd think it would do)
+
+Because there was no actual source code in your repo, and no actual tests configured in your `config.yml`, Circle considers your build to have "succeeded." Most customers' projects are far more complicated, oftentimes with multiple Docker images and multiple steps, including a large number of tests—here's an example. You can learn more about all the possible steps one might put in a `config.yml` file here:
   
-* Note: We are building on: https://github.com/iynere/circle-walkthru 
-  * we want to show jobs and workflows in a simple example 
+* *Note: We are building on: https://github.com/iynere/circle-walkthru* 
+  * *we want to show jobs and workflows in a simple example* 
 
 ### 6. Forking an existing project to see some more CircleCI funtionality 
 * Open to suggestion on what repo would be best for this section
