@@ -23,13 +23,13 @@ CircleCI Lunch and Learn
 
 ### 5. First CircleCI Build
 #### :computer: Let's try out something simple to start off with
-##### Creating a repository 
+#### Creating a repository 
 * Navigate to your account on GitHub.com 
   * Go to the **Repositories** tab and then select **New**
   * Alternatively you can navigate directly to https://github.com/new
 <img src="images/GH_Repo-New-Banner.png">
 <img src="images/create-repo-circle-101-initialise-readme.png">
-##### Adding a .yml file 
+#### Adding a .yml file 
  * CircleCI uses the .yml file to identify how you want your testing environment setup and what tests you want to run.
  * On CircleCI 2.0, this file must be called `config.yml` and must be in a hidden folder called `.circleci` (on Mac, Linux, and Windows systems, files and folders whose names start with a period are treated as system files that are hidden from users by default).
 
@@ -53,6 +53,21 @@ jobs:
 The `<language>:<version TAG>` text tells CircleCI what Docker image to use when it builds your project. Circle will use the image to boot up a "container"—a virtual computing environment where it will install any languages, system utilities, dependencies, web browsers, etc., that your project might need in order to run.
 
 For this example, replace the `<language>:<version TAG>` text with `ruby:2.3-node-browsers`. This would typically be used for a web application built with Ruby on Rails and Node.js. Then commit your new file.  
+
+#### Setting up your build on CircleCI
+
+For this step, you will need a CircleCI account. Visit https://circleci.com/signup and click either the "Start with GitHub" or "Start with Bitbucket" button. You will need to give CircleCI access to your GitHub or Bitbucket account in order to run your builds. 
+
+If you already have a CircleCI account then you can navigate to your dashboard: https://circleci.com/dashboard
+
+Next, you will be given the option of "following" any projects you have access to that are already building on CircleCI (this would typically apply to developers connected to a company or organization's GitHub/Bitbucket account). Since this probably doesn't apply to you, click "Skip - I don't want to follow any projects." On the next screen, you'll be able to add the repo you just created as a new project on Circle.
+
+To add your new repo, find your GitHub or Bitbucket account on the left side of the page, under the "1) Choose an organization that you are a member of" text. When you click on your account, you should see your repo appear in the window on the right. Click the "Setup project" button next to it.
+<img src="images/CircleCI-add-new-project-list.png">
+
+On the next screen, you're given some options for configuring your project on CircleCI. Leave everything as-is for now and just click the "Start building" button a bit down the page on the right.
+<img src="images/CircleCI-2.0-setup-project-circle101.png">
+<img src="images/CircleCI-2.0-start-building.png">
   
 * Note: We are building on: https://github.com/iynere/circle-walkthru 
   * we want to show jobs and workflows in a simple example 
