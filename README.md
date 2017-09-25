@@ -29,7 +29,7 @@ CircleCI Lunch and Learn
   * Alternatively you can navigate directly to https://github.com/new
 <img src="images/GH_Repo-New-Banner.png">
 <img src="images/create-repo-circle-101-initialise-readme.png">
-##### Adding a .yml file
+##### Adding a .yml file 
  * CircleCI uses the .yml file to identify how you want your testing environment setup and what tests you want to run.
  * On CircleCI 2.0, this file must be called `config.yml` and must be in a hidden folder called `.circleci` (on Mac, Linux, and Windows systems, files and folders whose names start with a period are treated as system files that are hidden from users by default).
 
@@ -39,7 +39,7 @@ CircleCI Lunch and Learn
 
 * To start out with a simple config.yml, copy the text below into the file editing window on GitHub:
 
-```
+```yml
 version: 2
 jobs:
   build:
@@ -48,7 +48,7 @@ jobs:
     steps:
       - checkout
       - run: echo "hello world"
-      ```
+```
       
 The `<language>:<version TAG>` text tells CircleCI what Docker image to use when it builds your project. Circle will use the image to boot up a "container"—a virtual computing environment where it will install any languages, system utilities, dependencies, web browsers, etc., that your project might need in order to run.
 
