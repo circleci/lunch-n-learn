@@ -2,6 +2,7 @@
 CircleCI Lunch and Learn
 
 <img src="https://lever-client-logos.s3.amazonaws.com/circle-logo-horizontal.png">
+<img src="images/continuous-integration-with-circle-ci.png">
 
 # CircleCI 101 - Lunch and learn :construction:
 
