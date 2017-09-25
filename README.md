@@ -29,9 +29,11 @@ CircleCI Lunch and Learn
   * Alternatively you can navigate directly to https://github.com/new
 <img src="images/GH_Repo-New-Banner.png">
 <img src="images/create-repo-circle-101-initialise-readme.png">
+
 #### Adding a .yml file
- * CircleCI uses the `.yml` file to identify how you want your testing environment setup and what tests you want to run.
- * On CircleCI 2.0, this file must be called `config.yml` and must be in a hidden folder called `.circleci` (on Mac, Linux, and Windows systems, files and folders whose names start with a period are treated as system files that are hidden from users by default).
+
+CircleCI uses the `.yml` file to identify how you want your testing environment setup and what tests you want to run.
+On CircleCI 2.0, this file must be called `config.yml` and must be in a hidden folder called `.circleci` (on Mac, Linux, and Windows systems, files and folders whose names start with a period are treated as system files that are hidden from users by default).
 
  * To create the file and folder on GitHub, click the **"Create new file"** button the repo page and type `.circleci/config.yml`.
   
