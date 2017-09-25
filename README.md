@@ -23,15 +23,17 @@ CircleCI Lunch and Learn
 
 ### 5. First CircleCI Build
 #### :computer: Let's try out something simple to start off with
-##### Creating a repository 
+#### Creating a repository 
 * Navigate to your account on GitHub.com 
   * Go to the **Repositories** tab and then select **New**
   * Alternatively you can navigate directly to https://github.com/new
 <img src="images/GH_Repo-New-Banner.png">
 <img src="images/create-repo-circle-101-initialise-readme.png">
-##### Adding a .yml file 
- * CircleCI uses the .yml file to identify how you want your testing environment setup and what tests you want to run.
- * On CircleCI 2.0, this file must be called `config.yml` and must be in a hidden folder called `.circleci` (on Mac, Linux, and Windows systems, files and folders whose names start with a period are treated as system files that are hidden from users by default).
+
+#### Adding a .yml file
+
+CircleCI uses the `.yml` file to identify how you want your testing environment setup and what tests you want to run.
+On CircleCI 2.0, this file must be called `config.yml` and must be in a hidden folder called `.circleci` (on Mac, Linux, and Windows systems, files and folders whose names start with a period are treated as system files that are hidden from users by default).
 
  * To create the file and folder on GitHub, click the **"Create new file"** button the repo page and type `.circleci/config.yml`.
   
@@ -53,9 +55,38 @@ jobs:
 The `<language>:<version TAG>` text tells CircleCI what Docker image to use when it builds your project. Circle will use the image to boot up a "container"—a virtual computing environment where it will install any languages, system utilities, dependencies, web browsers, etc., that your project might need in order to run.
 
 For this example, replace the `<language>:<version TAG>` text with `ruby:2.3-node-browsers`. This would typically be used for a web application built with Ruby on Rails and Node.js. Then commit your new file.  
+
+#### Setting up your build on CircleCI
+
+For this step, you will need a CircleCI account. Visit https://circleci.com/signup and click either the "Start with GitHub" or "Start with Bitbucket" button. You will need to give CircleCI access to your GitHub or Bitbucket account in order to run your builds. 
+
+If you already have a CircleCI account then you can navigate to your dashboard: https://circleci.com/dashboard
+
+Next, you will be given the option of "following" any projects you have access to that are already building on CircleCI (this would typically apply to developers connected to a company or organization's GitHub/Bitbucket account). Since this probably doesn't apply to you, click "Skip - I don't want to follow any projects." On the next screen, you'll be able to add the repo you just created as a new project on Circle.
+
+To add your new repo, find your GitHub or Bitbucket account on the left side of the page, under the "1) Choose an organization that you are a member of" text. When you click on your account, you should see your repo appear in the window on the right. Click the "Setup project" button next to it.
+
+<img src="images/CircleCI-add-new-project-list.png">
+
+On the next screen, you're given some options for configuring your project on CircleCI. Leave everything as-is for now and just click the "Start building" button a bit down the page on the right.
+
+<img src="images/CircleCI-2.0-setup-project-circle101.png">
+<img src="images/CircleCI-2.0-start-building.png">
+
+#### Running your first CircleCI build!
+
+You should see your build start to run automatically—and pass! So, what just happened? Click on the green button and let's investigate.
+
+1. **Spin up environment:** CircleCI used the `ruby:2.3-node-browsers` Docker image to launch a virtual computing environment with Ruby, Node.js, and web browsers pre-installed
+
+2. **Checkout code:** Circle checked out your GitHub/Bitbucket repository and "cloned" it into the virtual environment launched in step 1
+
+3. **echo "hello world":** this was the only other instruction in your `config.yml` file: Circle ran the echo command with the input "hello world" ([echo](https://linux.die.net/man/1/echo) does exactly what you'd think it would do)
+
+Because there was no actual source code in your repo, and no actual tests configured in your `config.yml`, Circle considers your build to have "succeeded." Most customers' projects are far more complicated, oftentimes with multiple Docker images and multiple steps, including a large number of tests—here's an example. You can learn more about all the possible steps one might put in a `config.yml` file here:
   
-* Note: We are building on: https://github.com/iynere/circle-walkthru 
-  * we want to show jobs and workflows in a simple example 
+* *Note: We are building on: https://github.com/iynere/circle-walkthru* 
+  * *we want to show jobs and workflows in a simple example* 
 
 ### 6. Forking an existing project to see some more CircleCI funtionality 
 * Open to suggestion on what repo would be best for this section
