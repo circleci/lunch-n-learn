@@ -98,7 +98,7 @@ jobs:
       - run: echo "A first hello"      
 ```
 
-Next we need to rename our two builds so that they have different names. In my example below I picked `one` and `two`. Change the contents of the echo statements to something differnt. To make the build take a longer period of time we can add a system sleep command. 
+Next we need to rename our two builds so that they have different names. In my example below I imaginatively picked `one` and `two`. Change the contents of the echo statements to something differnt. To make the build take a longer period of time we can add a system sleep command. 
 
 We need to add a `workflows` section to our config file. The workflows section can be placed anywhere in the file. Typically it is found either at the top or the bottom of the file. 
 
@@ -133,7 +133,7 @@ Commit these changes to your repository and navigate back over to the CircleCI d
 
 <img src="images/workflows-circle-101-running.png">
 
-And drilling a little further into our workflow..
+And drilling a little deeper into our workflow..
 
 <img src="images/inside-workflows-circle-101-running.png">
 
