@@ -3,8 +3,6 @@
 
 # CircleCI 101 - Lunch and learn  <img src="images/lunch-learn-brown-bag-apple-notebooks.jpg" width="50" height="50" />
 
-## Outline of the lunch :bento: and learn :school:
-
 ### Prereqs 
 
 * Some basic knowledge of git and an existing GitHub.com account *(also fine for people to create an account at the beginning of class)*
