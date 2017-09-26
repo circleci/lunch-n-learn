@@ -8,18 +8,16 @@
 
 ## Outline the plan/flow of the lunch :bento: and learn :school:
 
-### 1. Brief intros for whatever team members are present 
-
-### 2. Prereqs 
+### Prereqs 
 
 * Some basic knowledge of git and an existing GitHub.com account *(also fine for people to create an account at the beginning of class)*
 * Some basic terminal or bash know-how is helpful. Prior experiance using the command line comes in handy. We will be using a Java Script project in our example. But no worries, there is no need to know all the ins-and-outs of Java Script :relieved:
 
-### 3. What is Continuious Integration? What is CD also (basic level)
+### What is Continuious Integration? What is CD also (basic level)
 
-### 4. What is CircleCI?  - *some marketing speak here*
+### What is CircleCI?  - *some marketing speak here*
 
-### 5. First CircleCI Build
+### First CircleCI Build
 #### :computer: Let's try out something simple to start off with
 #### Creating a repository 
 * Navigate to your account on GitHub.com 
@@ -44,15 +42,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/<language>:<version TAG>
+      - image: debian:jessie
     steps:
       - checkout
-      - run: echo "hello world"
+      - run: echo "A first hello"
 ```
       
-The `<language>:<version TAG>` text tells CircleCI what Docker image to use when it builds your project. Circle will use the image to boot up a "container"—a virtual computing environment where it will install any languages, system utilities, dependencies, web browsers, etc., that your project might need in order to run.
-
-For this example, replace the `<language>:<version TAG>` text with `ruby:2.3-node-browsers`. This would typically be used for a web application built with Ruby on Rails and Node.js. Then commit your new file.  
+The `- image: debian:jessie` text tells CircleCI what Docker image to use when it builds your project. Circle will use the image to boot up a "container" — a virtual computing environment where it will install any languages, system utilities, dependencies, web browsers, etc., that your project might need in order to run.
 
 #### Setting up your build on CircleCI
 
@@ -86,23 +82,49 @@ Because there was no actual source code in your repo, and no actual tests config
 
 #### Using the workflows functionality 
 
-To see workflow in action we are edit our .circle/config.yml file. Once you have the file in edit mode in your browser window, copy and paste the text below overwriting the existing text that we entered earlier. 
+To see workflow in action we can edit our .circle/config.yml file. Once you have the file in edit mode in your browser window, select the text from `build` and onwards in you file and copy and paste the text to duplicate that section.
+
+That should look similar to the code block below:
+
+```yml
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:jessie
+    steps:
+      - checkout
+      - run: echo "A first hello"
+  build:
+    docker:
+      - image: debian:jessie
+    steps:
+      - checkout
+      - run: echo "A first hello"      
+```
+
+Next we need to rename our two builds so that they have different names. In my example below I picked `one` and `two`. Change the contents of the echo statements to something differnt. To make the build take a longer period of time we can add a system sleep command. 
+
+We need to add a `workflows` section to our config file. The workflows section can be placed anywhere in the file. Typically it is found either at the top or the bottom of the file. 
+
 
 ```yml
 version: 2
 jobs:
   one:
-    working_directory: "~"
     docker:
-      - image: "debian:jessie"
+      - image: debian:jessie
     steps:
-      - run: echo 1
+      - checkout
+      - run: echo "A first hello"
+      - run: sleep 25      
   two:
-    working_directory: "~"
     docker:
-      - image: "debian:jessie"
+      - image: debian:jessie
     steps:
-      - run: echo 2
+      - checkout
+      - run: echo "A more familiar hi"  
+      - run: sleep 15
 workflows:
   version: 2
   one_and_two:
@@ -111,11 +133,15 @@ workflows:
       - two
 ```
 
+
 Commit these changes to your repository and navigate back over to the CircleCI dashboard. 
 
-  
-* *Note: We are building on: https://github.com/iynere/circle-walkthru* 
-  * *we want to show jobs and workflows in a simple example* 
+<img src="images/workflows-circle-101-running.png">
+
+And drilling a little further into our workflow..
+
+<img src="images/inside-workflows-circle-101-running.png">
+
 
 ### 6. Forking an existing project to see some more CircleCI funtionality 
 * Open to suggestion on what repo would be best for this section
