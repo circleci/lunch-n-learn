@@ -81,7 +81,38 @@ You should see your build start to run automatically—and pass! So, what just h
 
 3. **echo "hello world":** this was the only other instruction in your `config.yml` file: Circle ran the echo command with the input "hello world" ([echo](https://linux.die.net/man/1/echo) does exactly what you'd think it would do)
 
-Because there was no actual source code in your repo, and no actual tests configured in your `config.yml`, Circle considers your build to have "succeeded." Most customers' projects are far more complicated, oftentimes with multiple Docker images and multiple steps, including a large number of tests—here's an example. You can learn more about all the possible steps one might put in a `config.yml` file here:
+Because there was no actual source code in your repo, and no actual tests configured in your `config.yml`, Circle considers your build to have "succeeded." Most customers' projects are far more complicated, oftentimes with multiple Docker images and multiple steps, including a large number of tests—here's an example. You can learn more about all the possible steps one might put in a `config.yml` file [here](https://circleci.com/docs/2.0/configuration-reference)
+
+
+#### Using the workflows functionality 
+
+To see workflow in action we are edit our .circle/config.yml file. Once you have the file in edit mode in your browser window, copy and paste the text below overwriting the existing text that we entered earlier. 
+
+```yml
+version: 2
+jobs:
+  one:
+    working_directory: "~"
+    docker:
+      - image: "debian:jessie"
+    steps:
+      - run: echo 1
+  two:
+    working_directory: "~"
+    docker:
+      - image: "debian:jessie"
+    steps:
+      - run: echo 2
+workflows:
+  version: 2
+  one_and_two:
+    jobs:
+      - one
+      - two
+```
+
+Commit these changes to your repository and navigate back over to the CircleCI dashboard. 
+
   
 * *Note: We are building on: https://github.com/iynere/circle-walkthru* 
   * *we want to show jobs and workflows in a simple example* 
