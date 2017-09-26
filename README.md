@@ -3,10 +3,7 @@
 
 # CircleCI 101 - Lunch and learn  <img src="images/lunch-learn-brown-bag-apple-notebooks.jpg" width="50" height="50" />
 
-* ### :watch: *For a 60 - 90 minute interactive "training"* 
-* ### :page_with_curl: *Format will be webpage or PDF*
-
-## Outline the plan/flow of the lunch :bento: and learn :school:
+## Outline of the lunch :bento: and learn :school:
 
 ### Prereqs 
 
