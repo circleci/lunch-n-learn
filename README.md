@@ -8,14 +8,10 @@
 * Some basic knowledge of git and an existing GitHub.com account *(also fine for people to create an account at the beginning of class)*
 * Some basic terminal or bash know-how is helpful. Prior experiance using the command line comes in handy. We will be using a Java Script project in our example. But no worries, there is no need to know all the ins-and-outs of Java Script :relieved:
 
-## What is Continuious Integration? What is CD also 
+## What is Continuious Integration? 
 
-Continuous Integration means multiple developers pushing small, frequent changes to a shared repository or ‘master’. They are integrating changes continuously, rather than periodically, hence the name. 
+**Continuous integration** is a practice that encourages developers to integrate their code into a 'master' branch of a shared repository early and often. Instead of building out features in isolation and integrating them at the end of a development cycle, code is integrated with the shared repository by each developer multiple times throughout the day.
 
-With CI best practices we are aiming to test all changes that are made to the code base utilizing: 
-* Unit Tests
-* Integration Tests
-* Functional Tests (also known as End to End tests)
 
 ## What is CircleCI?  
 
@@ -198,22 +194,11 @@ workflows:
 
 You can read more about workflows here: https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 
-## Forking an existing project to see some more CircleCI funtionality 
-* Open to suggestion on what repo would be best for this section
-* In George's GH training he uses:
-  * https://github.com/GERey/github-games branch: unit-test *(which is pretty 1.0 centric)*
-* Perhaps we can start with something simple, a simple 2.0 build and have then add workflows 
-* Maybe use the same repo we use for demos instead of the above github-games
-* Use our standard demo repo here - which is meant to show off a high-leven end-to-end 
-* caching - tweak docker or some other improvment 
-* SSH into the build 
+### SSH-ing into your build
 
-#### Steps to include:
-* Create a branch to work in their fork and make changes
-* Issue a pull request with changes to initiate a CircleCI build
+For those who are comfortable at the terminal window. 
 
-* Do something not supported or create a yaml typo and then fix that?
-* Caching and Auto balancing?
+<img src="images/SSH-screen.jpg">
 
 ## Questions :speech_balloon:
 
