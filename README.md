@@ -28,12 +28,12 @@ CircleCI integrates with a VCS (Version Control System) and automatically runs a
 
 ### Adding a .yml file
 
-CircleCI uses the `.yml` file to identify how you want your testing environment setup and what tests you want to run.
+CircleCI uses a [YAML](http://yaml.org/) file to identify how you want your testing environment setup and what tests you want to run.
 On CircleCI 2.0, this file must be called `config.yml` and must be in a hidden folder called `.circleci` (on Mac, Linux, and Windows systems, files and folders whose names start with a period are treated as system files that are hidden from users by default).
 
  * To create the file and folder on GitHub, click the **"Create new file"** button the repo page and type `.circleci/config.yml`.
   
- * You should now have in front of you a blank `config.yml` file in a .`circleci` folder.
+ * You should now have in front of you a blank `config.yml` file in a `.circleci` folder.
 
 * To start out with a simple config.yml, copy the text below into the file editing window on GitHub:
 
@@ -42,23 +42,23 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:jessie
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
 ```
       
-The `- image: debian:jessie` text tells CircleCI what Docker image to use when it builds your project. Circle will use the image to boot up a "container" — a virtual computing environment where it will install any languages, system utilities, dependencies, web browsers, etc., that your project might need in order to run.
+The `- image: circleci/ruby:2.4.1` text tells CircleCI what Docker image to use when it builds your project. Circle will use the image to boot up a "container" — a virtual computing environment where it will install any languages, system utilities, dependencies, web browsers, etc., that your project might need in order to run.
 
 ### Setting up your build on CircleCI
 
-For this step, you will need a CircleCI account. Visit https://circleci.com/signup and click either the "Start with GitHub" or "Start with Bitbucket" button. You will need to give CircleCI access to your GitHub or Bitbucket account in order to run your builds. 
+For this step, you will need a CircleCI account. Visit https://circleci.com/signup and click "Start with GitHub". You will need to give CircleCI access to your GitHub account in order to run your builds. 
 
 If you already have a CircleCI account then you can navigate to your dashboard: https://circleci.com/dashboard
 
 Next, you will be given the option of "following" any projects you have access to that are already building on CircleCI (this would typically apply to developers connected to a company or organization's GitHub/Bitbucket account). Since this probably doesn't apply to you, click "Skip - I don't want to follow any projects." On the next screen, you'll be able to add the repo you just created as a new project on Circle.
 
-To add your new repo, find your GitHub or Bitbucket account on the left side of the page, under the "1) Choose an organization that you are a member of" text. When you click on your account, you should see your repo appear in the window on the right. Click the "Setup project" button next to it.
+To add your new repo, ensure that your GitHub account is selected in the dropdown in the upper-left, find the repository you just created below, and click the "Setup project" button next to it.
 
 <img src="images/CircleCI-add-new-project-list.png">
 
@@ -71,17 +71,22 @@ On the next screen, you're given some options for configuring your project on Ci
 
 You should see your build start to run automatically—and pass! So, what just happened? Click on the green button and let's investigate.
 
-1. **Spin up environment:** CircleCI used the `debian:jessie` Docker image to launch a virtual computing environment.
+1. **Spin up environment:** CircleCI used the `circleci/ruby:2.4.1` Docker image to launch a virtual computing environment.
 
-2. **Checkout code:** Circle checked out your GitHub repository and "cloned" it into the virtual environment launched in step 1
+2. **Checkout code:** CircleCI checked out your GitHub repository and "cloned" it into the virtual environment launched in step 1
 
-3. **echo "hello world":** this was the only other instruction in your `config.yml` file: Circle ran the echo command with the input "hello world" ([echo](https://linux.die.net/man/1/echo) does exactly what you'd think it would do)
+3. **echo:** this was the only other instruction in your `config.yml` file: CircleCI ran the echo command with the input "A first hello" ([echo](https://linux.die.net/man/1/echo) does exactly what you'd think it would do)
 
-Because there was no actual source code in your repo, and no actual tests configured in your `config.yml`, Circle considers your build to have "succeeded." Most customers' projects are far more complicated, oftentimes with multiple Docker images and multiple steps, including a large number of tests—here's an example. You can learn more about all the possible steps one might put in a `config.yml` file [here](https://circleci.com/docs/2.0/configuration-reference)
+Even though there was no actual source code in your repo, and no actual tests configured in your `config.yml`, CircleCI considers your build to have "succeeded" because all steps completed successfully (returned an [exit code](https://en.wikipedia.org/wiki/Exit_status) of 0). Most customers' projects are far more complicated, oftentimes with multiple Docker images and multiple steps, including a large number of tests—here's an example. You can learn more about all the possible steps one might put in a `config.yml` file [here](https://circleci.com/docs/2.0/configuration-reference).
+
+### Breaking your build!
+
+Edit your `config.yml` file (you can just do this in the GitHub editor for simplicity) and replace `echo "A first hello"` with `notacommand`. Commit and push this change (or just hit "Commit" in the GitHub editor) to trigger a new build and see what happens!
+
 
 ### Using the workflows functionality 
 
-To see workflow in action we can edit our .circle/config.yml file. Once you have the file in edit mode in your browser window, select the text from `build` and onwards in you file and copy and paste the text to duplicate that section.
+To see workflow in action we can edit our `.circle/config.yml` file. Once you have the file in edit mode in your browser window, select the text from `build` and onwards in you file and copy and paste the text to duplicate that section.
 
 That should look similar to the code block below:
 
@@ -90,13 +95,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: debian:jessie
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
   build:
     docker:
-      - image: debian:jessie
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"      
@@ -112,17 +117,17 @@ version: 2
 jobs:
   one:
     docker:
-      - image: debian:jessie
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
-      - run: sleep 25      
+      - run: sleep 25
   two:
     docker:
-      - image: debian:jessie
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: echo "A more familiar hi"  
+      - run: echo "A more familiar hi"
       - run: sleep 15
 workflows:
   version: 2
@@ -152,7 +157,7 @@ jobs:
   one:
     working_directory: ~/circle101
     docker:
-      - image: circleci/clojure:boot-2.7.1-browsers
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
@@ -167,7 +172,7 @@ jobs:
       - run: sleep 10      
   two:
     docker:
-      - image: circleci/clojure:boot-2.7.1-browsers
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A more familiar hi"  
@@ -190,34 +195,24 @@ workflows:
       - two:
           requires:
             - one
-```            
-
-You can read more about workflows here: https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
-
-
-### Breaking your build!
-
-Edit you congif.yml file and change the 
-          if [[ `cat /tmp/workspace/echo-output` == "Trying out workspaces" ]]; then
-
-
+```
+            
+You can read more about workspaces here: https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 
 ### SSH-ing into your build
 
 <img src="images/SSH-screen.jpg">
 
-For those who are comfortable at the terminal window. 
+For those who are comfortable with the terminal, you can SSH directly into your CircleCI jobs to troubleshoot issues with your builds like this:
 
 <img src="images/rebuild-with-SSH.png">
 
 <img src="images/SSH-build-terminal-string.png">
 
-## Questions :speech_balloon:
-
 ## Further resources & links :link:
-* would like some input from the team with resources they reference ofter or that they found really helpful along the way.
-* This can be ordered into sections 
-* ### CircleCI
+
+### CircleCI
+
 * The CircleCI blog and how to follow it
   * https://circleci.com/blog/
 * Relavant blog post  
@@ -227,13 +222,14 @@ For those who are comfortable at the terminal window.
   * https://twitter.com/circleci
   * https://www.facebook.com/circleci
   
-* ### CI
+### CI
+
 * https://martinfowler.com/articles/continuousIntegration.html
 * https://en.wikipedia.org/wiki/Continuous_integration#Best_practices
   
-* ### YAML
+### YAML
 * https://en.wikipedia.org/wiki/YAML#Advanced_components
 
-* ### Terraform
+### Terraform
 * https://blog.gruntwork.io/an-introduction-to-terraform-f17df9c6d180
 
