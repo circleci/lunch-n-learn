@@ -214,6 +214,9 @@ https://help.github.com/articles/connecting-to-github-with-ssh/*
 
 ## Further resources & links :link:
 
+Blog post on how to validate CircleCI Config on every commit with a git hook - *extra credit* :grin:
+https://circleci.com/blog/circleci-hacks-validate-circleci-config-on-every-commit-with-a-git-hook/
+
 ### CircleCI
 
 * The CircleCI blog and how to follow it
@@ -225,7 +228,7 @@ https://help.github.com/articles/connecting-to-github-with-ssh/*
   * https://twitter.com/circleci
   * https://www.facebook.com/circleci
   
-### CI
+### Continuous Integration
 
 * https://martinfowler.com/articles/continuousIntegration.html
 * https://en.wikipedia.org/wiki/Continuous_integration#Best_practices
