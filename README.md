@@ -214,7 +214,7 @@ https://help.github.com/articles/connecting-to-github-with-ssh/*
 
 ## Further resources & links :link:
 
-Blog post on how to validate CircleCI Config on every commit with a git hook - *extra credit* :grin:
+Blog post on how to validate CircleCI Config on every commit with a git hook - *extra credit* :apple:
 https://circleci.com/blog/circleci-hacks-validate-circleci-config-on-every-commit-with-a-git-hook/
 
 ### CircleCI
