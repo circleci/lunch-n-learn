@@ -212,9 +212,21 @@ https://help.github.com/articles/connecting-to-github-with-ssh/*
 
 <img src="images/SSH-build-terminal-string.png">
 
+Copy the `ssh` string from the enabling SSH section of your build. Open a terminal and paste in the `ssh` string. 
+
+Using some of the following commands see if you can find and view the contents of the file we created using workspaces
+
+```
+pwd     #  print what directory, find out where you are in the file system
+ls -al   # list what files and directories are in the current directory
+cd <directory_name>    # change directory to the <directory_name> directory 
+cat <file_name>    # show me the contents of the file <file_name>
+```
+
+
 ## Further resources & links :link:
 
-Blog post on how to validate CircleCI Config on every commit with a git hook - *extra credit* :apple:
+Blog post on how to validate the CircleCI `config.yml` on every commit with a git hook - *extra credit* :apple:
 https://circleci.com/blog/circleci-hacks-validate-circleci-config-on-every-commit-with-a-git-hook/
 
 ### CircleCI
