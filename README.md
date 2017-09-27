@@ -3,25 +3,25 @@
 
 # CircleCI 101 - Lunch and learn  <img src="images/lunch-learn-brown-bag-apple-notebooks.jpg" width="50" height="50" />
 
-### Prereqs 
+## Prereqs 
 
 * Some basic knowledge of git and an existing GitHub.com account *(also fine for people to create an account at the beginning of class)*
 * Some basic terminal or bash know-how is helpful. Prior experiance using the command line comes in handy. We will be using a Java Script project in our example. But no worries, there is no need to know all the ins-and-outs of Java Script :relieved:
 
-### What is Continuious Integration? What is CD also (basic level)
+## What is Continuious Integration? What is CD also (basic level)
 
-### What is CircleCI?  - *some marketing speak here*
+## What is CircleCI?  - *some marketing speak here*
 
-### First CircleCI Build
+## First CircleCI Build
 #### :computer: Let's try out something simple to start off with
-#### Creating a repository 
+### Creating a repository 
 * Navigate to your account on GitHub.com 
   * Go to the **Repositories** tab and then select **New**
   * Alternatively you can navigate directly to https://github.com/new
 <img src="images/GH_Repo-New-Banner.png">
 <img src="images/create-repo-circle-101-initialise-readme.png">
 
-#### Adding a .yml file
+### Adding a .yml file
 
 CircleCI uses the `.yml` file to identify how you want your testing environment setup and what tests you want to run.
 On CircleCI 2.0, this file must be called `config.yml` and must be in a hidden folder called `.circleci` (on Mac, Linux, and Windows systems, files and folders whose names start with a period are treated as system files that are hidden from users by default).
@@ -45,7 +45,7 @@ jobs:
       
 The `- image: debian:jessie` text tells CircleCI what Docker image to use when it builds your project. Circle will use the image to boot up a "container" — a virtual computing environment where it will install any languages, system utilities, dependencies, web browsers, etc., that your project might need in order to run.
 
-#### Setting up your build on CircleCI
+### Setting up your build on CircleCI
 
 For this step, you will need a CircleCI account. Visit https://circleci.com/signup and click either the "Start with GitHub" or "Start with Bitbucket" button. You will need to give CircleCI access to your GitHub or Bitbucket account in order to run your builds. 
 
@@ -62,7 +62,7 @@ On the next screen, you're given some options for configuring your project on Ci
 <img src="images/CircleCI-2.0-setup-project-circle101.png">
 <img src="images/CircleCI-2.0-start-building.png">
 
-#### Running your first CircleCI build!
+### Running your first CircleCI build!
 
 You should see your build start to run automatically—and pass! So, what just happened? Click on the green button and let's investigate.
 
@@ -74,8 +74,7 @@ You should see your build start to run automatically—and pass! So, what just h
 
 Because there was no actual source code in your repo, and no actual tests configured in your `config.yml`, Circle considers your build to have "succeeded." Most customers' projects are far more complicated, oftentimes with multiple Docker images and multiple steps, including a large number of tests—here's an example. You can learn more about all the possible steps one might put in a `config.yml` file [here](https://circleci.com/docs/2.0/configuration-reference)
 
-
-#### Using the workflows functionality 
+### Using the workflows functionality 
 
 To see workflow in action we can edit our .circle/config.yml file. Once you have the file in edit mode in your browser window, select the text from `build` and onwards in you file and copy and paste the text to duplicate that section.
 
@@ -128,7 +127,6 @@ workflows:
       - two
 ```
 
-
 Commit these changes to your repository and navigate back over to the CircleCI dashboard. 
 
 <img src="images/workflows-circle-101-running.png">
@@ -137,8 +135,15 @@ And drilling a little deeper into our workflow..
 
 <img src="images/inside-workflows-circle-101-running.png">
 
+You can read more about workflows here: https://circleci.com/docs/2.0/workflows/#overview
 
-### Forking an existing project to see some more CircleCI funtionality 
+### Adding some changes to use the workspaces functionality 
+
+
+
+You can read more about workflows here: https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
+
+## Forking an existing project to see some more CircleCI funtionality 
 * Open to suggestion on what repo would be best for this section
 * In George's GH training he uses:
   * https://github.com/GERey/github-games branch: unit-test *(which is pretty 1.0 centric)*
@@ -155,9 +160,9 @@ And drilling a little deeper into our workflow..
 * Do something not supported or create a yaml typo and then fix that?
 * Caching and Auto balancing?
 
-### 7. Questions :speech_balloon:
+### Questions :speech_balloon:
 
-### 8. Further resources links :link:
+### Further resources links :link:
 * would like some input from the team with resources they reference ofter or that they found really helpful along the way.
 * This can be ordered into sections 
 * #### CircleCI
