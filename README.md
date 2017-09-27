@@ -8,9 +8,18 @@
 * Some basic knowledge of git and an existing GitHub.com account *(also fine for people to create an account at the beginning of class)*
 * Some basic terminal or bash know-how is helpful. Prior experiance using the command line comes in handy. We will be using a Java Script project in our example. But no worries, there is no need to know all the ins-and-outs of Java Script :relieved:
 
-## What is Continuious Integration? What is CD also (basic level)
+## What is Continuious Integration? What is CD also 
 
-## What is CircleCI?  - *some marketing speak here*
+Continuous Integration means multiple developers pushing small, frequent changes to a shared repository or ‘master’. They are integrating changes continuously, rather than periodically, hence the name. 
+
+With CI best practices we are aiming to test all changes that are made to the code base utilizing: 
+* Unit Tests
+* Integration Tests
+* Functional Tests (also known as End to End tests)
+
+## What is CircleCI?  
+
+CircleCI integrates with a VCS (Version Control System) and automatically runs a series of steps every time that it detects a change to your repository. The CI stands for Continuous Integration. ... The benefit of continuous integration is that micro updates to the code base are far easier to merge and integrate than large ones, and the frequency with which the micro updates are pushed and pulled ensures that everyone's local version is more or less the same.
 
 ## First CircleCI Build
 #### :computer: Let's try out something simple to start off with
@@ -206,12 +215,12 @@ You can read more about workflows here: https://circleci.com/docs/2.0/workflows/
 * Do something not supported or create a yaml typo and then fix that?
 * Caching and Auto balancing?
 
-### Questions :speech_balloon:
+## Questions :speech_balloon:
 
-### Further resources links :link:
+## Further resources & links :link:
 * would like some input from the team with resources they reference ofter or that they found really helpful along the way.
 * This can be ordered into sections 
-* #### CircleCI
+* ### CircleCI
 * The CircleCI blog and how to follow it
   * https://circleci.com/blog/
 * Relavant blog post  
@@ -221,5 +230,10 @@ You can read more about workflows here: https://circleci.com/docs/2.0/workflows/
   * https://twitter.com/circleci
   * https://www.facebook.com/circleci
   
-* #### CI
+* ### CI
 * https://martinfowler.com/articles/continuousIntegration.html
+* https://en.wikipedia.org/wiki/Continuous_integration#Best_practices
+  
+* ### YAML
+* https://en.wikipedia.org/wiki/YAML#Advanced_components
+
