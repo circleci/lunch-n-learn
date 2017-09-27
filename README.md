@@ -149,40 +149,37 @@ You can read more about workflows here: https://circleci.com/docs/2.0/workflows/
 
 ### Adding some changes to use the workspaces functionality 
 
-Each workflow has an associated workspace which can be used to transfer files to downstream jobs as the workflow progresses. You can use workspaces to pass along data that is unique to this run and which is needed for downstream jobs. 
+Each workflow has an associated workspace which can be used to transfer files to downstream jobs as the workflow progresses. You can use workspaces to pass along data that is unique to this run and which is needed for downstream jobs. Try updating `config.yml` to the following:
 
 ```yml
 version: 2
 jobs:
   one:
-    working_directory: ~/circle101
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
-      - run: mkdir -p workspace
-      - run: echo "Trying out workspaces" > workspace/echo-output
+      - run: mkdir -p my_workspace
+      - run: echo "Trying out workspaces" > my_workspace/echo-output
       - persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory
-          root: workspace
+          root: my_workspace
           # Must be relative path from root
           paths:
             - echo-output      
-      - run: sleep 10      
   two:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A more familiar hi"  
-      - run: sleep 7
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
-          at: /tmp/workspace
+          at: my_workspace
 
       - run: |
-          if [[ `cat /tmp/workspace/echo-output` == "Trying out workspaces" ]]; then
+          if [[ $(cat my_workspace/echo-output) == "Trying out workspaces" ]]; then
             echo "It worked!";
           else
             echo "Nope!"; exit 1
@@ -222,7 +219,6 @@ ls -al   # list what files and directories are in the current directory
 cd <directory_name>    # change directory to the <directory_name> directory 
 cat <file_name>    # show me the contents of the file <file_name>
 ```
-
 
 ## Further resources & links :link:
 
