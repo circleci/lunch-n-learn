@@ -194,6 +194,14 @@ workflows:
 
 You can read more about workflows here: https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 
+
+### Breaking your build!
+
+Edit you congif.yml file and change the 
+          if [[ `cat /tmp/workspace/echo-output` == "Trying out workspaces" ]]; then
+
+
+
 ### SSH-ing into your build
 
 <img src="images/SSH-screen.jpg">
