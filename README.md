@@ -139,7 +139,53 @@ You can read more about workflows here: https://circleci.com/docs/2.0/workflows/
 
 ### Adding some changes to use the workspaces functionality 
 
+Each workflow has an associated workspace which can be used to transfer files to downstream jobs as the workflow progresses. You can use workspaces to pass along data that is unique to this run and which is needed for downstream jobs. 
 
+```yml
+version: 2
+jobs:
+  one:
+    working_directory: ~/circle101
+    docker:
+      - image: circleci/clojure:boot-2.7.1-browsers
+    steps:
+      - checkout
+      - run: echo "A first hello"
+      - run: mkdir -p workspace
+      - run: echo "Trying out workspaces" > workspace/echo-output
+      - persist_to_workspace:
+          # Must be an absolute path, or relative path from working_directory
+          root: workspace
+          # Must be relative path from root
+          paths:
+            - echo-output      
+      - run: sleep 10      
+  two:
+    docker:
+      - image: circleci/clojure:boot-2.7.1-browsers
+    steps:
+      - checkout
+      - run: echo "A more familiar hi"  
+      - run: sleep 7
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: /tmp/workspace
+
+      - run: |
+          if [[ `cat /tmp/workspace/echo-output` == "Trying out workspaces" ]]; then
+            echo "It worked!";
+          else
+            echo "Nope!"; exit 1
+          fi
+workflows:
+  version: 2
+  one_and_two:
+    jobs:
+      - one
+      - two:
+          requires:
+            - one
+```            
 
 You can read more about workflows here: https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 
