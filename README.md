@@ -196,9 +196,13 @@ You can read more about workflows here: https://circleci.com/docs/2.0/workflows/
 
 ### SSH-ing into your build
 
+<img src="images/SSH-screen.jpg">
+
 For those who are comfortable at the terminal window. 
 
-<img src="images/SSH-screen.jpg">
+<img src="images/rebuild-with-SSH.png">
+
+<img src="images/SSH-build-terminal-string.png">
 
 ## Questions :speech_balloon:
 
@@ -221,4 +225,7 @@ For those who are comfortable at the terminal window.
   
 * ### YAML
 * https://en.wikipedia.org/wiki/YAML#Advanced_components
+
+* ### Terraform
+* https://blog.gruntwork.io/an-introduction-to-terraform-f17df9c6d180
 
