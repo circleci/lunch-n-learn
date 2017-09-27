@@ -107,7 +107,7 @@ jobs:
       - run: echo "A first hello"      
 ```
 
-Next we need to rename our two builds so that they have different names. In my example below I imaginatively picked `one` and `two`. Change the contents of the echo statements to something differnt. To make the build take a longer period of time we can add a system sleep command. 
+Next we need to rename our two builds so that they have different names. In my example below I imaginatively picked `one` and `two`. Change the contents of the echo statements to something different. To make the build take a longer period of time we can add a system sleep command. 
 
 We need to add a `workflows` section to our config file. The workflows section can be placed anywhere in the file. Typically it is found either at the top or the bottom of the file. 
 
