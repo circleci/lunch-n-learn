@@ -201,9 +201,12 @@ You can read more about workspaces here: https://circleci.com/docs/2.0/workflows
 
 ### SSH-ing into your build
 
-<img src="images/SSH-screen.jpg">
+<img src="images/SSH-screen.jpg" width="100" height="100" />
 
 For those who are comfortable with the terminal, you can SSH directly into your CircleCI jobs to troubleshoot issues with your builds like this:
+
+*Note that you will need to add your SSH keys to your GitHub account:
+https://help.github.com/articles/connecting-to-github-with-ssh/*
 
 <img src="images/rebuild-with-SSH.png">
 
