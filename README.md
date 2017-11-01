@@ -7,15 +7,43 @@
 
 * Some basic knowledge of git and an existing GitHub.com account *(also fine for people to create an account at the beginning of class)*
 * Some basic terminal or bash know-how is helpful. Prior experiance using the command line comes in handy. We will be using a Java Script project in our example. But no worries, there is no need to know all the ins-and-outs of Java Script :relieved:
+* It is necessary to have your GitHub.com SSH Keys setup for the SSH-ing into your build section. The information you need for that is [here](https://help.github.com/articles/connecting-to-github-with-ssh/)
 
 ## What is Continuious Integration? 
 
 **Continuous integration** is a practice that encourages developers to integrate their code into a 'master' branch of a shared repository early and often. Instead of building out features in isolation and integrating them at the end of a development cycle, code is integrated with the shared repository by each developer multiple times throughout the day.
 
+**Continuous Integration** is a key step to digital transformation.
 
-## What is CircleCI?  
+**What?**    
+Every developer commits daily to a shared mainline.  
+Every commit triggers an automated build and test.  
+If build and test fails, it’s repaired quickly - within minutes.  
 
-CircleCI integrates with a VCS (Version Control System) and automatically runs a series of steps every time that it detects a change to your repository. The CI stands for Continuous Integration. ... The benefit of continuous integration is that micro updates to the code base are far easier to merge and integrate than large ones, and the frequency with which the micro updates are pushed and pulled ensures that everyone's local version is more or less the same.
+**Why?**    
+Improve team productivity, efficiency, happiness.  
+Find problems and solve them, quickly.  
+Release higher quality, more stable products.  
+
+## CircleCI  
+
+**CircleCI** - Our mission is to empower technology-driven organizations to do their best work.  
+We want to make engineering teams more productive through intelligent automation.
+
+## Advantages of Continuous integration
+
+Continuous integration allows organizations to: 
+* Improve team productivity and efficiency
+* Accelerate time to market
+* Build the right product
+* Release higher quality, more stable products
+* Increase customer satisfaction
+* Keep developers happy, and shipping code
+
+*CircleCI provides Enterprise-class support + services, with the flexibility of a startup.  
+We work where you work: Linux, macOS, Android - SaaS or behind your firewall.  
+Leverage the opportunities created by your modern Git repos.  
+Set up in minutes out of the box, or fully customize to suit your needs.* 
 
 ## First CircleCI Build
 #### :computer: Let's try out something simple to start off with
