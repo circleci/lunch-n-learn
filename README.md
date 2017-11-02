@@ -6,12 +6,12 @@
 ## Prereqs 
 
 * Some basic knowledge of git and an existing GitHub.com account *(also fine for people to create an account at the beginning of class)*
-* Some basic terminal or bash know-how is helpful. Prior experiance using the command line comes in handy. We will be using a Java Script project in our example. But no worries, there is no need to know all the ins-and-outs of Java Script :relieved:
+* Some basic terminal or bash know-how is helpful. Prior experience using the command line comes in handy. We will be using a JavaScript project in our example. But no worries, there is no need to know all the ins-and-outs of JavaScript :relieved:
 * It is necessary to have your GitHub.com SSH Keys setup for the SSH-ing into your build section. The information you need for that is [here](https://help.github.com/articles/connecting-to-github-with-ssh/)
 
 ## What is Continuious Integration? 
 
-**Continuous integration** is a practice that encourages developers to integrate their code into a 'master' branch of a shared repository early and often. Instead of building out features in isolation and integrating them at the end of a development cycle, code is integrated with the shared repository by each developer multiple times throughout the day.
+**Continuous integration** is a practice that encourages developers to integrate their code into a `master` branch of a shared repository early and often. Instead of building out features in isolation and integrating them at the end of a development cycle, code is integrated with the shared repository by each developer multiple times throughout the day.
 
 **Continuous Integration** is a key step to digital transformation.
 
@@ -21,11 +21,11 @@ Every commit triggers an automated build and test.
 If build and test fails, it’s repaired quickly - within minutes.  
 
 **Why?**    
-Improve team productivity, efficiency, happiness.  
-Find problems and solve them, quickly.  
-Release higher quality, more stable products.  
+Improve team productivity, efficiency, happiness.
+Find problems and solve them, quickly.
+Release higher quality, more stable products.
 
-## CircleCI  
+## CircleCI
 
 **CircleCI** - Our mission is to empower technology-driven organizations to do their best work.  
 We want to make engineering teams more productive through intelligent automation.
@@ -56,7 +56,7 @@ Set up in minutes out of the box, or fully customize to suit your needs.*
 
 ### Adding a .yml file
 
-CircleCI uses a [YAML](http://yaml.org/) file to identify how you want your testing environment setup and what tests you want to run.
+CircleCI uses a [YAML](https://en.wikipedia.org/wiki/YAML) file to identify how you want your testing environment setup and what tests you want to run.
 On CircleCI 2.0, this file must be called `config.yml` and must be in a hidden folder called `.circleci` (on Mac, Linux, and Windows systems, files and folders whose names start with a period are treated as system files that are hidden from users by default).
 
  * To create the file and folder on GitHub, click the **"Create new file"** button the repo page and type `.circleci/config.yml`.
@@ -169,7 +169,7 @@ Commit these changes to your repository and navigate back over to the CircleCI d
 
 <img src="images/workflows-circle-101-running.png">
 
-And drilling a little deeper into our workflow..
+And drilling a little deeper into our workflow...
 
 <img src="images/inside-workflows-circle-101-running.png">
 
