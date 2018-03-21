@@ -1,7 +1,7 @@
-# CircleCI Lunch and Learn
+# CircleCI Lunch & Learn
 <img src="images/continuous-integration-with-circle-ci.png">
 
-# CircleCI 101 - Lunch and learn  <img src="images/lunch-learn-brown-bag-apple-notebooks.jpg" width="50" height="50" />
+# CircleCI 101 - Lunch & Learn  <img src="images/lunch-learn-brown-bag-apple-notebooks.jpg" width="50" height="50" />
 
 ## Prereqs 
 
@@ -248,7 +248,7 @@ cd <directory_name>    # change directory to the <directory_name> directory
 cat <file_name>    # show me the contents of the file <file_name>
 ```
 
-## Further resources & links :link:
+## Further resources/links :link:
 
 Blog post on how to validate the CircleCI `config.yml` on every commit with a git hook - *extra credit* :apple:
 https://circleci.com/blog/circleci-hacks-validate-circleci-config-on-every-commit-with-a-git-hook/
