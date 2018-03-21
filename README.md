@@ -11,7 +11,7 @@
 
 ## What is Continuous Integration? 
 
-**Continuous integration** is a practice that encourages developers to integrate their code into a `master` branch of a shared repository early and often. Instead of building out features in isolation and integrating them at the end of a development cycle, code is integrated with the shared repository by each developer multiple times throughout the day.
+**Continuous Integration** is a practice that encourages developers to integrate their code into a `master` branch of a shared repository early and often. Instead of building out features in isolation and integrating them at the end of a development cycle, code is integrated with the shared repository by each developer multiple times throughout the day.
 
 **Continuous Integration** is a key step to digital transformation.
 
@@ -30,9 +30,9 @@ Release higher quality, more stable products.
 **CircleCI** - Our mission is to empower technology-driven organizations to do their best work.  
 We want to make engineering teams more productive through intelligent automation.
 
-## Advantages of Continuous integration
+## Advantages of Continuous Integration
 
-Continuous integration allows organizations to: 
+Continuous Integration allows organizations to: 
 * Improve team productivity and efficiency
 * Accelerate time to market
 * Build the right product
@@ -112,9 +112,9 @@ Even though there was no actual source code in your repo, and no actual tests co
 Edit your `config.yml` file (you can just do this in the GitHub editor for simplicity) and replace `echo "A first hello"` with `notacommand`. Commit and push this change (or just hit "Commit" in the GitHub editor) to trigger a new build and see what happens!
 
 
-### Using the workflows functionality 
+### Using Workflows
 
-To see workflow in action we can edit our `.circle/config.yml` file. Once you have the file in edit mode in your browser window, select the text from `build` and onwards in you file and copy and paste the text to duplicate that section.
+To see Workflows in action we can edit our `.circle/config.yml` file. Once you have the file in edit mode in your browser window, select the text from `build` and onwards in you file and copy and paste the text to duplicate that section.
 
 That should look similar to the code block below:
 
@@ -175,9 +175,9 @@ And drilling a little deeper into our workflow...
 
 You can read more about workflows here: https://circleci.com/docs/2.0/workflows/#overview
 
-### Adding some changes to use the workspaces functionality 
+### Adding some changes to use Workspaces 
 
-Each workflow has an associated workspace which can be used to transfer files to downstream jobs as the workflow progresses. You can use workspaces to pass along data that is unique to this run and which is needed for downstream jobs. Try updating `config.yml` to the following:
+Each Workflow has an associated Workspace which can be used to transfer files to downstream jobs as the workflow progresses. You can use workspaces to pass along data that is unique to this run and which is needed for downstream jobs. Try updating `config.yml` to the following:
 
 ```yml
 version: 2
@@ -222,9 +222,9 @@ workflows:
             - one
 ```
             
-You can read more about workspaces here: https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
+You can read more about Workspaces here: https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 
-### SSH-ing into your build
+### SSH'ing into your build
 
 <img src="images/SSH-screen.jpg" width="100" height="100" />
 
