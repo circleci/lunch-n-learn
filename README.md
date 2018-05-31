@@ -276,7 +276,7 @@ jobs:
     steps:
       - checkout
       - run: mkdir -p my_workspace
-      - run: echo "Trying out workspaces" > my_workspace/echo-output
+      - run: echo "Hello World" > my_workspace/echo-output
       - persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory
           root: my_workspace
@@ -291,12 +291,7 @@ jobs:
           # Must be absolute path or relative path from working_directory
           at: my_workspace
 
-      - run: |
-          if [[ $(cat my_workspace/echo-output) == "Trying out workspaces" ]]; then
-            echo "It worked!";
-          else
-            echo "Nope!"; exit 1
-          fi   
+      - run: cat my_workspace/echo-output
           
   testb:
     docker:
@@ -307,6 +302,7 @@ jobs:
           at: my_workspace
 
       - run: |
+          # this will fail intentionally, we'll use SSH to debug and fix
           if [[ $(cat my_workspace/echo-output) == "Trying out workspaces" ]]; then
             echo "It worked!";
           else
@@ -323,8 +319,7 @@ jobs:
 
       - run: |
           echo "Deploying message!"
-          # OOps, thats not the right path, this will intentionally fail..
-          cat my_workspace/output
+          cat my_workspace/echo-output
 
 workflows:
   version: 2
