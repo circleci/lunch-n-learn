@@ -141,26 +141,26 @@ We need to add a `workflows` section to our config file. The workflows section c
 ```yml
 version: 2
 jobs:
-  one:
+  build:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
-      - run: sleep 25
-  two:
+      - run: sleep 5
+  test:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A more familiar hi"
-      - run: sleep 15
+      - run: sleep 5
 workflows:
   version: 2
-  one_and_two:
+  build_and_test:
     jobs:
-      - one
-      - two
+      - build
+      - test
 ```
 
 Commit these changes to your repository and navigate back over to the CircleCI dashboard. 
@@ -171,7 +171,97 @@ And drilling a little deeper into our workflow...
 
 <img src="images/inside-workflows-circle-101-running.png">
 
+Since we want our jobs to run sequentially, we add the `requires` directive.
+
+
+```yml
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A first hello"
+      - run: sleep 5
+  test:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A more familiar hi"
+      - run: sleep 5
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          # only run this job if build succeeds
+          requires:
+            - build 
+```
+
+### Fan-out / Fan-in Workflows
+Sometimes you'll have more lengthy jobs (integration or browser testing) that can be broken into parallel tracks. If all these jobs pass, you can merge back into final steps (like deployment).  This technique is commonly reffered to as fan-out/fan-in.
+
+```yml
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A first hello"
+      - run: sleep 5
+      
+      
+  testa:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A more familiar hi"
+      - run: sleep 5
+  testb:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A localized Salut!"
+      - run: sleep 5
+      
+      
+  deploy:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A final goodbye"
+      - run: sleep 5
+      
+      
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - testa:
+          requires:
+            - build 
+      - testb:
+          requires:
+            - build 
+      - deploy:
+          requires:
+            - testa
+            - testb
+```
+
 You can read more about workflows here: https://circleci.com/docs/2.0/workflows/#overview
+
+
 
 ### Adding some changes to use Workspaces 
 
@@ -180,12 +270,11 @@ Each Workflow has an associated Workspace which can be used to transfer files to
 ```yml
 version: 2
 jobs:
-  one:
+  build:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: echo "A first hello"
       - run: mkdir -p my_workspace
       - run: echo "Trying out workspaces" > my_workspace/echo-output
       - persist_to_workspace:
@@ -194,12 +283,10 @@ jobs:
           # Must be relative path from root
           paths:
             - echo-output      
-  two:
+  testa:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
-      - checkout
-      - run: echo "A more familiar hi"  
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: my_workspace
@@ -209,15 +296,51 @@ jobs:
             echo "It worked!";
           else
             echo "Nope!"; exit 1
-          fi
+          fi   
+          
+  testb:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: my_workspace
+
+      - run: |
+          if [[ $(cat my_workspace/echo-output) == "Trying out workspaces" ]]; then
+            echo "It worked!";
+          else
+            echo "Nope!"; exit 1
+          fi   
+          
+  deploy:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: my_workspace
+
+      - run: |
+          echo "Deploying message!"
+          # OOps, thats not the right path, this will intentionally fail..
+          cat my_workspace/output
+
 workflows:
   version: 2
-  one_and_two:
+  build_and_test:
     jobs:
-      - one
-      - two:
+      - build
+      - testa:
           requires:
-            - one
+            - build 
+      - testb:
+          requires:
+            - build 
+      - deploy:
+          requires:
+            - testa
+            - testb
 ```
             
 You can read more about Workspaces here: https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
