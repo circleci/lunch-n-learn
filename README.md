@@ -90,9 +90,8 @@ To add your new repo, ensure that your GitHub account is selected in the dropdow
 
 <img src="images/CircleCI-add-new-project-list.png">
 
-On the next screen, you're given some options for configuring your project on CircleCI. Leave everything as-is for now and just click the "Start building" button a bit down the page on the right.
+On the next screen, you're given some options for configuring your project on CircleCI.  The options help you generate a sample config.yml yo start with.  For now leave everything as-is for now and just click the "Start building" button a bit down the page on the right.
 
-<img src="images/CircleCI-2.0-setup-project-circle101.png">
 <img src="images/CircleCI-2.0-start-building.png">
 
 ### Running your first CircleCI build!
