@@ -337,7 +337,10 @@ workflows:
             - testa
             - testb
 ```
-            
+
+**NOTE**: Uh-oh, our `testb` job failed, blocking our deployment.  Can you use SSH debugging (below) to find the right fix?  Hint: Try to run the `at my_workspace/echo-output` yourself, what is the output?
+     
+     
 You can read more about Workspaces here: https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 
 ### SSH'ing into your build
