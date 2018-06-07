@@ -35,7 +35,6 @@ We want to make engineering teams more productive through intelligent automation
 Continuous Integration allows organizations to: 
 * Improve team productivity and efficiency
 * Accelerate time to market
-* Build the right product
 * Release higher quality, more stable products
 * Increase customer satisfaction
 * Keep developers happy, and shipping code
@@ -76,7 +75,7 @@ jobs:
       - run: echo "A first hello"
 ```
       
-The `- image: circleci/ruby:2.4.1` text tells CircleCI what Docker image to use when it builds your project. Circle will use the image to boot up a "container" — a virtual computing environment where it will install any languages, system utilities, dependencies, web browsers, etc., that your project might need in order to run.
+The `- image: circleci/ruby:2.4.1` text tells CircleCI what Docker image to use when it builds your project. Circle will use the image to boot up a "container" — a virtual computing environment where it will install any languages, system utilities, dependencies, web browsers, etc., that your project might need in order to run.   (CircleCI provides images for most every language)[https://circleci.com/docs/2.0/circleci-images/] based on populare community images.
 
 ### Setting up your build on CircleCI
 
@@ -90,9 +89,8 @@ To add your new repo, ensure that your GitHub account is selected in the dropdow
 
 <img src="images/CircleCI-add-new-project-list.png">
 
-On the next screen, you're given some options for configuring your project on CircleCI. Leave everything as-is for now and just click the "Start building" button a bit down the page on the right.
+On the next screen, you're given some options for configuring your project on CircleCI.  The options help you generate a sample config.yml yo start with.  For now leave everything as-is for now and just click the "Start building" button a bit down the page on the right.
 
-<img src="images/CircleCI-2.0-setup-project-circle101.png">
 <img src="images/CircleCI-2.0-start-building.png">
 
 ### Running your first CircleCI build!
@@ -135,7 +133,7 @@ jobs:
       - run: echo "A first hello"      
 ```
 
-Next we need to rename our two builds so that they have different names. In my example below I imaginatively picked `one` and `two`. Change the contents of the echo statements to something different. To make the build take a longer period of time we can add a system sleep command. 
+Next we need to rename our two builds so that they have different names. In my example below I imaginatively picked `build` and `test`. Change the contents of the echo statements to something different. To make the build take a longer period of time we can add a system sleep command. 
 
 We need to add a `workflows` section to our config file. The workflows section can be placed anywhere in the file. Typically it is found either at the top or the bottom of the file. 
 
@@ -143,26 +141,26 @@ We need to add a `workflows` section to our config file. The workflows section c
 ```yml
 version: 2
 jobs:
-  one:
+  build:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
-      - run: sleep 25
-  two:
+      - run: sleep 5
+  test:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A more familiar hi"
-      - run: sleep 15
+      - run: sleep 5
 workflows:
   version: 2
-  one_and_two:
+  build_and_test:
     jobs:
-      - one
-      - two
+      - build
+      - test
 ```
 
 Commit these changes to your repository and navigate back over to the CircleCI dashboard. 
@@ -173,7 +171,97 @@ And drilling a little deeper into our workflow...
 
 <img src="images/inside-workflows-circle-101-running.png">
 
+Since we want our jobs to run sequentially, we add the `requires` directive.
+
+
+```yml
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A first hello"
+      - run: sleep 5
+  test:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A more familiar hi"
+      - run: sleep 5
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          # only run this job if build succeeds
+          requires:
+            - build 
+```
+
+### Fan-out / Fan-in Workflows
+Sometimes you'll have more lengthy jobs (integration or browser testing) that can be broken into parallel tracks. If all these jobs pass, you can merge back into final steps (like deployment).  This technique is commonly reffered to as fan-out/fan-in.
+
+```yml
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A first hello"
+      - run: sleep 5
+      
+      
+  testa:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A more familiar hi"
+      - run: sleep 5
+  testb:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A localized Salut"
+      - run: sleep 5
+      
+      
+  deploy:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - checkout
+      - run: echo "A final goodbye"
+      - run: sleep 5
+      
+      
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - testa:
+          requires:
+            - build 
+      - testb:
+          requires:
+            - build 
+      - deploy:
+          requires:
+            - testa
+            - testb
+```
+
 You can read more about workflows here: https://circleci.com/docs/2.0/workflows/#overview
+
+
 
 ### Adding some changes to use Workspaces 
 
@@ -182,46 +270,77 @@ Each Workflow has an associated Workspace which can be used to transfer files to
 ```yml
 version: 2
 jobs:
-  one:
+  build:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
-      - run: echo "A first hello"
       - run: mkdir -p my_workspace
-      - run: echo "Trying out workspaces" > my_workspace/echo-output
+      - run: echo "Hello World" > my_workspace/echo-output
       - persist_to_workspace:
           # Must be an absolute path, or relative path from working_directory
           root: my_workspace
           # Must be relative path from root
           paths:
             - echo-output      
-  two:
+  testa:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
-      - checkout
-      - run: echo "A more familiar hi"  
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: my_workspace
+
+      - run: cat my_workspace/echo-output
+          
+  testb:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
           at: my_workspace
 
       - run: |
+          # this will fail intentionally, we'll use SSH to debug and fix
           if [[ $(cat my_workspace/echo-output) == "Trying out workspaces" ]]; then
             echo "It worked!";
           else
             echo "Nope!"; exit 1
-          fi
+          fi   
+          
+  deploy:
+    docker:
+      - image: circleci/ruby:2.4.1
+    steps:
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: my_workspace
+
+      - run: |
+          echo "Deploying message!"
+          cat my_workspace/echo-output
+
 workflows:
   version: 2
-  one_and_two:
+  build_and_test:
     jobs:
-      - one
-      - two:
+      - build
+      - testa:
           requires:
-            - one
+            - build 
+      - testb:
+          requires:
+            - build 
+      - deploy:
+          requires:
+            - testa
+            - testb
 ```
-            
+
+**NOTE**: Uh-oh, our `testb` job failed, blocking our deployment.  Can you use SSH debugging (below) to find the right fix?  Hint: Try to run the `at my_workspace/echo-output` yourself, what is the output?
+     
+     
 You can read more about Workspaces here: https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 
 ### SSH'ing into your build
