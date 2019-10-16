@@ -11,7 +11,7 @@
 
 ## What is Continuous Integration? 
 
-**Continuous Integration** is a practice that encourages developers to integrate their code into a `master` branch of a shared repository early and often. Instead of building out features in isolation and integrating them at the end of a development cycle, code is integrated with the shared repository by each developer multiple times throughout the day.
+**Continuous Integration is a practice that encourages developers to integrate their code into a `master` branch of a shared repository early and often. Instead of building out features in isolation and integrating them at the end of a development cycle, code is integrated with the shared repository by each developer multiple times throughout the day.**
 
 **Continuous Integration** is a key step to digital transformation.
 
