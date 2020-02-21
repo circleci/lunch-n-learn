@@ -125,7 +125,7 @@ jobs:
     steps:
       - checkout
       - run: echo "A first hello"
-  build:
+  test:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
