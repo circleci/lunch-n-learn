@@ -89,7 +89,11 @@ To add your new repo, ensure that your GitHub account is selected in the dropdow
 
 <img src="images/CircleCI-add-new-project-list.png">
 
-On the next screen, you're given some options for configuring your project on CircleCI.  The options help you generate a sample config.yml yo start with.  For now leave everything as-is for now and just click the "Start building" button a bit down the page on the right.
+One the next screen, you're given the option to add a config file or use an existing config file. Since we created a config file in GitHub, we can choose 'Use existing config'
+
+<img src="images/CircleCI-add-config.png">
+
+then click the "Start building" button on the pop-up.
 
 <img src="images/CircleCI-2.0-start-building.png">
 
@@ -163,9 +167,9 @@ workflows:
       - test
 ```
 
-Commit these changes to your repository and navigate back over to the CircleCI dashboard. 
+Commit these changes to your repository and navigate over to the pipeline for the project. 
 
-<img src="images/workflows-circle-101-running.png">
+<img src="images/CircleCI-pipeline.png">
 
 And drilling a little deeper into our workflow...
 
@@ -352,7 +356,7 @@ For those who are comfortable with the terminal, you can SSH directly into your 
 *Note that you will need to add your SSH keys to your GitHub account:
 https://help.github.com/articles/connecting-to-github-with-ssh/*
 
-<img src="images/rebuild-with-SSH.png">
+<img src="images/rerun-with-SSH.png">
 
 <img src="images/SSH-build-terminal-string.png">
 
