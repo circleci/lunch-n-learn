@@ -48,9 +48,8 @@ Set up in minutes out of the box, or fully customize to suit your needs.*
 #### :computer: Let's try out something simple to start off with
 ### Creating a repository 
 * Navigate to your account on GitHub.com 
-  * Go to the **Repositories** tab and then select **New**
+  * Select **New** on the left column of the page
   * Alternatively you can navigate directly to https://github.com/new
-<img src="images/GH_Repo-New-Banner.png">
 <img src="images/create-repo-circle-101-initialise-readme.png">
 
 ### Adding a .yml file
@@ -355,6 +354,36 @@ For those who are comfortable with the terminal, you can SSH directly into your 
 
 *Note that you will need to add your SSH keys to your GitHub account:
 https://help.github.com/articles/connecting-to-github-with-ssh/*
+
+1. Open Terminal.
+
+2. Paste the text below, substituting in your GitHub email address.
+```
+$ ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+3. When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
+
+4. At the prompt, type a secure passphrase. 
+
+5. Copy the SSH key to your clipboard.
+```
+$ pbcopy < ~/.ssh/id_rsa.pub
+# Copies the contents of the id_rsa.pub file to your clipboard
+```
+5. Copy the SSH key to your clipboard.
+
+6. In the upper-right corner of any page in GitHub, click your profile photo, then click Settings.
+
+7. In the user settings sidebar, click SSH and GPG keys.
+
+8. Click New SSH key or Add SSH key.
+
+9. In the "Title" field, add a descriptive label for the new key. For example, if you're using a personal Mac, you might call this key "Personal MacBook Air".
+
+10. Paste your key into the "Key" field.
+
+11. Click Add SSH key
+
 
 <img src="images/rerun-with-SSH.png">
 
