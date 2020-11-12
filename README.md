@@ -57,7 +57,7 @@ Set up in minutes out of the box, or fully customize to suit your needs.*
 CircleCI uses a [YAML](https://en.wikipedia.org/wiki/YAML) file to identify how you want your testing environment setup and what tests you want to run.
 On CircleCI 2.0, this file must be called `config.yml` and must be in a hidden folder called `.circleci` (on Mac, Linux, and Windows systems, files and folders whose names start with a period are treated as system files that are hidden from users by default).
 
- * To create the file and folder on GitHub, click the **"Create new file"** button the repo page and type `.circleci/config.yml`.
+ * To create the file GitHub, click the **"Add file"** then **"Create new file"** button the repo page and type `.circleci/config.yml`.
   
  * You should now have in front of you a blank `config.yml` file in a `.circleci` folder.
 
@@ -68,7 +68,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
@@ -124,13 +124,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
   build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"      
@@ -146,14 +146,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
       - run: sleep 5
   test:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A more familiar hi"
@@ -182,14 +182,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
       - run: sleep 5
   test:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A more familiar hi"
@@ -213,7 +213,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
@@ -222,14 +222,14 @@ jobs:
       
   testa:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A more familiar hi"
       - run: sleep 5
   testb:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A localized Salut"
@@ -238,7 +238,7 @@ jobs:
       
   deploy:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A final goodbye"
@@ -275,7 +275,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - checkout
       - run: mkdir -p my_workspace
@@ -288,7 +288,7 @@ jobs:
             - echo-output      
   testa:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
@@ -298,7 +298,7 @@ jobs:
           
   testb:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
@@ -314,7 +314,7 @@ jobs:
           
   deploy:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: cimg/ruby:2.4.1
     steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
@@ -359,7 +359,11 @@ https://help.github.com/articles/connecting-to-github-with-ssh/*
 
 2. Paste the text below, substituting in your GitHub email address.
 ```
-$ ssh-keygen -t ed25519 -C "your_email@example.com"
+<!-- $ ssh-keygen -t ed25519 -C "your_email@example.com" -->
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+To delete ssh keys 
+$ cd ~/.ssh
+$ rm ~/.ssh/github_rsa.pub
 ```
 3. When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
 
