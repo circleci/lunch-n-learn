@@ -346,7 +346,7 @@ workflows:
      
 You can read more about Workspaces here: https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 
-### SSH'ing into your build
+### BONUS SSH'ing into your build
 
 <img src="images/SSH-screen.jpg" width="100" height="100" />
 
