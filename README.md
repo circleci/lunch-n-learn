@@ -68,7 +68,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
@@ -124,13 +124,13 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
   build:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"      
@@ -146,14 +146,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
       - run: sleep 5
   test:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A more familiar hi"
@@ -182,14 +182,14 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
       - run: sleep 5
   test:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A more familiar hi"
@@ -213,7 +213,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
@@ -222,14 +222,14 @@ jobs:
       
   testa:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A more familiar hi"
       - run: sleep 5
   testb:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A localized Salut"
@@ -238,7 +238,7 @@ jobs:
       
   deploy:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A final goodbye"
@@ -275,7 +275,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: mkdir -p my_workspace
@@ -288,7 +288,7 @@ jobs:
             - echo-output      
   testa:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
@@ -298,7 +298,7 @@ jobs:
           
   testb:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
@@ -314,7 +314,7 @@ jobs:
           
   deploy:
     docker:
-      - image: cimg/ruby:2.4.1
+      - image: circleci/ruby:2.4.1
     steps:
       - attach_workspace:
           # Must be absolute path or relative path from working_directory
