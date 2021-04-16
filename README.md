@@ -48,9 +48,8 @@ Set up in minutes out of the box, or fully customize to suit your needs.*
 #### :computer: Let's try out something simple to start off with
 ### Creating a repository 
 * Navigate to your account on GitHub.com 
-  * Go to the **Repositories** tab and then select **New**
+  * Select **New** on the left column of the page
   * Alternatively you can navigate directly to https://github.com/new
-<img src="images/GH_Repo-New-Banner.png">
 <img src="images/create-repo-circle-101-initialise-readme.png">
 
 ### Adding a .yml file
@@ -58,7 +57,7 @@ Set up in minutes out of the box, or fully customize to suit your needs.*
 CircleCI uses a [YAML](https://en.wikipedia.org/wiki/YAML) file to identify how you want your testing environment setup and what tests you want to run.
 On CircleCI 2.0, this file must be called `config.yml` and must be in a hidden folder called `.circleci` (on Mac, Linux, and Windows systems, files and folders whose names start with a period are treated as system files that are hidden from users by default).
 
- * To create the file and folder on GitHub, click the **"Create new file"** button the repo page and type `.circleci/config.yml`.
+ * To create the file GitHub, click the **"Add file"** then **"Create new file"** button the repo page and type `.circleci/config.yml`.
   
  * You should now have in front of you a blank `config.yml` file in a `.circleci` folder.
 
@@ -89,7 +88,11 @@ To add your new repo, ensure that your GitHub account is selected in the dropdow
 
 <img src="images/CircleCI-add-new-project-list.png">
 
-On the next screen, you're given some options for configuring your project on CircleCI.  The options help you generate a sample config.yml yo start with.  For now leave everything as-is for now and just click the "Start building" button a bit down the page on the right.
+One the next screen, you're given the option to add a config file or use an existing config file. Since we created a config file in GitHub, we can choose 'Use existing config'
+
+<img src="images/CircleCI-add-config.png">
+
+then click the "Start building" button on the pop-up.
 
 <img src="images/CircleCI-2.0-start-building.png">
 
@@ -163,9 +166,9 @@ workflows:
       - test
 ```
 
-Commit these changes to your repository and navigate back over to the CircleCI dashboard. 
+Commit these changes to your repository and navigate over to the pipeline for the project. 
 
-<img src="images/workflows-circle-101-running.png">
+<img src="images/CircleCI-pipeline.png">
 
 And drilling a little deeper into our workflow...
 
@@ -343,7 +346,7 @@ workflows:
      
 You can read more about Workspaces here: https://circleci.com/docs/2.0/workflows/#using-workspaces-to-share-data-among-jobs
 
-### SSH'ing into your build
+### BONUS SSH'ing into your build
 
 <img src="images/SSH-screen.jpg" width="100" height="100" />
 
@@ -352,7 +355,41 @@ For those who are comfortable with the terminal, you can SSH directly into your 
 *Note that you will need to add your SSH keys to your GitHub account:
 https://help.github.com/articles/connecting-to-github-with-ssh/*
 
-<img src="images/rebuild-with-SSH.png">
+1. Open Terminal.
+
+2. Paste the text below, substituting in your GitHub email address.
+```
+<!-- $ ssh-keygen -t ed25519 -C "your_email@example.com" -->
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+To delete ssh keys 
+$ cd ~/.ssh
+$ rm ~/.ssh/github_rsa.pub
+```
+3. When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
+
+4. At the prompt, type a secure passphrase. 
+
+5. Copy the SSH key to your clipboard.
+```
+$ pbcopy < ~/.ssh/id_rsa.pub
+# Copies the contents of the id_rsa.pub file to your clipboard
+```
+5. Copy the SSH key to your clipboard.
+
+6. In the upper-right corner of any page in GitHub, click your profile photo, then click Settings.
+
+7. In the user settings sidebar, click SSH and GPG keys.
+
+8. Click New SSH key or Add SSH key.
+
+9. In the "Title" field, add a descriptive label for the new key. For example, if you're using a personal Mac, you might call this key "Personal MacBook Air".
+
+10. Paste your key into the "Key" field.
+
+11. Click Add SSH key
+
+
+<img src="images/rerun-with-SSH.png">
 
 <img src="images/SSH-build-terminal-string.png">
 
