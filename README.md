@@ -75,7 +75,7 @@ jobs:
       - run: echo "A first hello"
 ```
       
-The `- image: circleci/ruby:2.4.1` text tells CircleCI what Docker image to use when it builds your project. Circle will use the image to boot up a "container" — a virtual computing environment where it will install any languages, system utilities, dependencies, web browsers, etc., that your project might need in order to run.   (CircleCI provides images for most every language)[https://circleci.com/docs/2.0/circleci-images/] based on populare community images.
+The `- image: circleci/ruby:2.4.1` text tells CircleCI what Docker image to use when it builds your project. Circle will use the image to boot up a "container" — a virtual computing environment where it will install any languages, system utilities, dependencies, web browsers, etc., that your project might need in order to run. [CircleCI provides images for most every language](https://circleci.com/docs/2.0/circleci-images/) based on populare community images.
 
 ### Setting up your build on CircleCI
 
